@@ -59,21 +59,23 @@ public class Cookbook {
         }
     }
         public void printSubTotals() {
-            System.out.printf("%9s %9s %9s\n", "Meal Type", "Total", "Mean", "Median");
+            System.out.printf("%9s %9s %9s %9s %9s %9s \n", "Meal Type", "Total", "Mean", "Min","Max","Median");
             MealType oldMealType = null;
             int count = 0;
             int subtotal = 0;
+            int min = 0;
+            int max = 0;
             for (Meal item : meals) {
                 if (item != null) {
                     if (item.getMealType() != oldMealType || oldMealType != null) {
-                        System.out.printf("%-9s %9s %9s\n", oldMealType.getMeal(), count, (subtotal / count));
+                        System.out.printf("%-9s %9s %9s %9s %9s %9s \n", oldMealType.getMeal(), count, min, max, (subtotal / count));
                     }
                     oldMealType = item.getMealType();
                     count++;
                     subtotal += item.getCalories();
                 }
             }
-            System.out.printf("%-9s %9s %9s\n", oldMealType.getMeal(), count, (subtotal / count));
+            System.out.printf("%-9s %9s %9s %9s %9s %9s \n", oldMealType.getMeal(), count, min, max,(subtotal / count));
         }
 
     public void printMealsByType(MealType mealType) {
